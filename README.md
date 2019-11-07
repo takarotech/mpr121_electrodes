@@ -22,7 +22,9 @@ git clone https://github.com/takarotech/mpr121_electrodes.git
 #### Print registers tree
 ```app.mpr121.regs```
 #### Read touch_status register
-```app.mpr121.touch_status.get()```
+```app.mpr121.regs.touch_status.get()```
+#### Writes debounce register
+```app.mpr121.regs.debounce.touch.set(3)```
 #### Logs electrodes touch events
 ```app.log_electrodes()```
 
