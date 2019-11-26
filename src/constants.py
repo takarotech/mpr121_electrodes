@@ -30,9 +30,9 @@ BANNER = f'''
     Press <ctrl>+d to exit!
 
     {C.GREEN}Examples:{C.ESC}
-        {C.CYAN|C.BRIGHT}app.mpr121.config_regs()      {C.BLACK|C.BRIGHT}# Config the registers and enter reading mode.
-        {C.CYAN|C.BRIGHT}app.mpr121.regs               {C.BLACK|C.BRIGHT}# Print registers tree.
-        {C.CYAN|C.BRIGHT}app.mpr121.touch_status.get() {C.BLACK|C.BRIGHT}# Read touch_status register.
-        {C.CYAN|C.BRIGHT}app.log_electrodes()          {C.BLACK|C.BRIGHT}# Logs electrodes touch events (<ctrl>+c exit) 
+        {C.CYAN|C.BRIGHT}app.mpr121.config_regs()           {C.BLACK|C.BRIGHT}# Config the registers and enter reading mode.
+        {C.CYAN|C.BRIGHT}app.mpr121.regs                    {C.BLACK|C.BRIGHT}# Print registers tree.
+        {C.CYAN|C.BRIGHT}app.mpr121.regs.touch_status.get() {C.BLACK|C.BRIGHT}# Read touch_status register.
+        {C.CYAN|C.BRIGHT}app.log_electrodes()               {C.BLACK|C.BRIGHT}# Logs electrodes touch events (<ctrl>+c exit) 
 {C.ESC}
 '''

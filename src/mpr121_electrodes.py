@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
 import sys
+if not sys.version_info.major >= 3 and sys.version_info.minor >= 6:
+    print('Python 3.6 or higher is required! this is {}'.format(sys.version))
+    sys.exit(1)
 import logging
 import serial.tools.list_ports
 import IPython.terminal.embed as _ipython
