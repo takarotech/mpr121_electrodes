@@ -176,3 +176,28 @@ class Mpr121(object):
             ace=1, are=1, bva=3, usl=800 >> 2, lsl=600 >> 2, tl=700 >> 2)
         # go to run mode (must be the last configuration)
         self.set_mode(True)
+
+    def config_regs2(self):
+        '''Configure MPR121 for basic-sensitivity electrodes readings.
+        '''
+        # go to standby mode in order to write settings
+        self.set_mode(False)
+        # set all electrodes threshholds: touch = 12, release = 6
+        self.regs.electrode_threshold._bytes = b'\x0C' * 13 + b'\x06' * 13
+        self.regs.electrode_threshold.set()
+        # set baseline filters
+        self.regs.baseline_filters.set(
+            rising_mhd=0x01,
+            rising_nhd=0x01,
+            rising_ncl=0x0E,
+            rising_fdl=0x00,
+            falling_mhd=0x01,
+            falling_nhd=0x05,
+            falling_ncl=0x01,
+            falling_fdl=0x00)
+        # charge electrodes with 16mA in 0.5us encoding, 1ms period
+        self.regs.afe_configuration.set(cdc=16, ffi=0, esi=0, sfi=0, cdt=1)
+        # auto config baseline and filters
+        self.regs.auto_configuration.set(bva=3, usl=200, lsl=130, tl=180)
+        # go to run mode (must be the last configuration)
+        self.set_mode(True)
