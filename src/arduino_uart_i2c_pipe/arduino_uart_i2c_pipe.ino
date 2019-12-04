@@ -65,6 +65,11 @@ void loop(void)
 			address = i2c_buffer[0];
 
 			if (i2c_buffer[1]) {
+				if (size == 6) {
+					Wire.beginTransmission(address);
+					Wire.write(i2c_buffer[2]);
+					Wire.endTransmission(false);					
+				}
 				size = i2c_buffer[1];
 
 				DEBUG_PRINT("i2c: request(");
