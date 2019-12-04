@@ -7,7 +7,7 @@ import binascii
 class UartI2cDev(object):
     _logger = logging.getLogger('uart_i2c_dev')
     _UART_TERMINATOR = b'\n'
-    _UART_TIMEOUT = 0.01
+    _UART_TIMEOUT = 0.018
     _RESET_TIMEOUT = 2
 
     def __init__(self, uart_port, uart_baudrate, i2c_address, i2c_endianness='little'):

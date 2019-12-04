@@ -81,6 +81,18 @@ class App(object):
         except KeyboardInterrupt:
             pass
 
+    def log_electrodes_raw(self):
+        if not self.mpr121._configured:
+            self._logger.warning('MPR121 is not configured, calling config_regs()!')
+            self.mpr121.config_regs()
+        try:
+            while True:
+                self.mpr121.regs.electrode_value.get()
+                values = [getattr(self.mpr121.regs.electrode_value, f'e{i:02}').get() for i in range(8)]
+                self._logger.info('%s', values)
+        except KeyboardInterrupt:
+            pass
+
     def __exit__(self, exit_code=None):
         print('\n')
         self._logger.warning('Goodbye!\n')
